@@ -19,7 +19,7 @@ class CreateCourseStudentTable extends Migration
             $table->foreignId('course_id')->constrained('courses');
             $table->foreignId('student_id')->constrained('students');
 
-            $table->enum('status', ['approve', 'reject']);
+            $table->enum('status', ['pending', 'approve', 'reject'])->default('pending');
 
             $table->timestamps();
         });
