@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\front;
+// use App\Http\Controllers\front;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\front\CourseController;
+use App\Http\Controllers\front\HomepageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [front\HomepageController::class, 'index']);
+Route::get('/', [HomepageController::class, 'index'])->name('front.homePage');
+
+Route::get('/courses/category/{id}', [CourseController::class, 'show'])->name('front.category');
