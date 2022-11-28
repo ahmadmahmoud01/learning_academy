@@ -32,27 +32,27 @@
         </div>
         <div class="row">
             @foreach ($courses as $course)
-                    <div class="col-sm-6 col-lg-4 mb-5">
-                        <div class="single_special_cource">
-                            <img src="{{ asset('uploads/courses/' . $course->img) }}" class="special_img" alt="">
-                            <div class="special_cource_text">
-                                <a href="course-details.html" class="btn_4">{{ $course->category->name}}</a>
-                                <h4>$ {{ $course->price }}</h4>
-                                <a href="course-details.html"><h3>{{ $course->name }}</h3></a>
-                                <p>{{ $course->small_desc }}</p>
-                                <div class="author_info">
-                                    <div class="author_img">
-                                        <img src="{{ asset('uploads/trainers/' . $course->trainer->img)}}" alt="">
-                                        <div class="author_info_text">
-                                            <p>Conduct by:</p>
-                                            <h5><a href="#">{{ $course->trainer->name }}</a></h5>
-                                        </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="single_special_cource">
+                        <img src="{{ asset('uploads/courses/' . $course->img) }}" class="special_img" alt="">
+                        <div class="special_cource_text">
+                            <a href="{{ route('front.category', $course->category->id )}}" class="btn_4">{{ $course->category->name}}</a>
+                            <h4>$ {{ $course->price }}</h4>
+                            <a href="{{ route('front.showCourse', [$course->category->id, $course->id])}}"><h3>{{ $course->name }}</h3></a>
+                            <p>{{ $course->small_desc }}</p>
+                            <div class="author_info">
+                                <div class="author_img">
+                                    <img src="{{ asset('uploads/trainers/' . $course->trainer->img)}}" alt="">
+                                    <div class="author_info_text">
+                                        <p>Conduct by:</p>
+                                        <h5>{{ $course->trainer->name }}</a></h5>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
+                </div>
             @endforeach
             <div class="d-flex justify-content-center w-100">
                 {{ $courses->render() }}

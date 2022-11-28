@@ -13,7 +13,7 @@ class HomepageController extends Controller
 {
     public function index() {
 
-        $data['courses'] = Course::select('id', 'name', 'desc', 'small_desc', 'category_id', 'trainer_id', 'img', 'price')->orderBy('id', 'desc')->take(3)->get();
+        $data['courses'] = Course::select('id', 'name', 'desc', 'small_desc', 'category_id', 'trainer_id', 'img', 'price')->orderBy('id', 'DESC')->take(3)->get();
 
         $data['courses_count'] = Course::count();
         $data['trainers_count'] = Trainer::count();
