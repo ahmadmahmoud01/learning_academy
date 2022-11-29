@@ -3,6 +3,7 @@
 // use App\Http\Controllers\front;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\front\CourseController;
+use App\Http\Controllers\front\ContactController;
 use App\Http\Controllers\front\HomepageController;
 
 /*
@@ -22,3 +23,5 @@ Route::get('/', [HomepageController::class, 'index'])->name('front.homePage');
 Route::get('/category/{id}', [CourseController::class, 'category'])->name('front.category');
 // Single Course Page
 Route::get('/category/{id}/course/{c_id}', [CourseController::class, 'showCourse'])->name('front.showCourse');
+// Contact Page
+Route::get('/contact', [ContactController::class, 'index'])->name('front.contact');
