@@ -1,11 +1,14 @@
 <?php
 
 // use App\Http\Controllers\front;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\front\CourseController;
 use App\Http\Controllers\front\ContactController;
-use App\Http\Controllers\front\HomepageController;
 use App\Http\Controllers\front\MessageController;
+use App\Http\Controllers\front\HomepageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +38,32 @@ Route::post('/message/contact', [MessageController::class, 'contact'])->name('fr
 
 // Enroll Form
 Route::post('message/enroll', [MessageController::class, 'enroll'])->name('front.message.enroll');
+
+// Admin Dashboard
+
+Route::prefix('/dashboard')->group(function(){
+    Route::middleware('adminAuth')->group(function() {
+
+        Route::get('/', [HomeController::class, 'home'])->name('admin.home');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+    });
+
+    Route::get('/login', [AuthController::class, 'login'])->name('admin.login')->middleware('testguest');
+    Route::post('/login', [AuthController::class, 'doLogin'])->name('admin.doLogin');
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
