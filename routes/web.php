@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\front\CourseController;
 use App\Http\Controllers\front\ContactController;
 use App\Http\Controllers\front\HomepageController;
+use App\Http\Controllers\front\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,6 @@ Route::get('/category/{id}', [CourseController::class, 'category'])->name('front
 Route::get('/category/{id}/course/{c_id}', [CourseController::class, 'showCourse'])->name('front.showCourse');
 // Contact Page
 Route::get('/contact', [ContactController::class, 'index'])->name('front.contact');
+
+//Newsletter Form
+Route::post('/message/newsletter', [MessageController::class, 'newsletter'])->name('front.message.newsletter');
