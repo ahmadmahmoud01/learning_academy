@@ -29,3 +29,9 @@ Route::get('/contact', [ContactController::class, 'index'])->name('front.contact
 
 //Newsletter Form
 Route::post('/message/newsletter', [MessageController::class, 'newsletter'])->name('front.message.newsletter');
+
+// Contact form
+Route::post('/message/contact', [MessageController::class, 'contact'])->name('front.message.contact');
+
+// Enroll Form
+Route::post('message/enroll', [MessageController::class, 'enroll'])->name('front.message.enroll');

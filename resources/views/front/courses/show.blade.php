@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-lg-8 course_details_left">
                 <div class="main_image">
-                    {{-- <img class="img-fluid w-80 h-50" src='{{ asset("uploads/courses/$course->img") }}' alt=""> --}}
+                    {{-- <img class="img-fluid w-80 h-50" src="{{ asset('uploads/courses/' . $course->img) }}" alt=""> --}}
                     <img class="img-fluid" src='{{ asset("img/single_project.png") }}' alt="">
                 </div>
                 <div class="content_wrapper">
@@ -53,6 +53,40 @@
                     </ul>
                 </div>
 
+                <div class="my-5">
+                <form class="form-contact contact_form" action="{{ route('front.message.enroll') }}" method="post" >
+                    @csrf
+                    <div class="row">
+                        <input class="form-control" type="hidden" name="course_id" value="{{ $course->id }}">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" name="name"  type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder = 'Enter your name'>
+                            </div>
+                            @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" name="email"  type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder = 'Enter email address'>
+                            </div>
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" name="spec"  type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Speciality'" placeholder = 'Enter Speciality'>
+                            </div>
+                            @error('spec')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                        <div class="form-group mt-3">
+                            <button type="submit" class="button button-contactForm btn_1">Enroll</button>
+                        </div>
+                </form>
             </div>
         </div>
     </div>
