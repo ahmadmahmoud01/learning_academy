@@ -2,12 +2,14 @@
 
 // use App\Http\Controllers\front;
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\front\CourseController;
 use App\Http\Controllers\front\ContactController;
 use App\Http\Controllers\front\MessageController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\front\HomepageController;
 
 /*
@@ -46,6 +48,14 @@ Route::prefix('/dashboard')->group(function(){
 
         Route::get('/', [HomeController::class, 'home'])->name('admin.home');
         Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
+        // Category CRUD
+        Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+        Route::get('/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+        Route::post('/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
+        Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+        Route::post('/categories/update', [CategoryController::class, 'update'])->name('admin.categories.update');
+        Route::get('/categories/delete/{id}', [CategoryController::class, 'delete'])->name('admin.categories.delete');
     });
 
     Route::get('/login', [AuthController::class, 'login'])->name('admin.login')->middleware('testguest');
