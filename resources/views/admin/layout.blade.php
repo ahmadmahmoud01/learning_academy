@@ -23,6 +23,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('admin.categories.index') }}"">Categories</a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('admin.trainers.index') }}"">Trainers</a>
+                </li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('admin.login') }}">Login</a>
