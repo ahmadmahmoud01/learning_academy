@@ -23,9 +23,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('admin.categories.index') }}"">Categories</a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('admin.trainers.index') }}"">Trainers</a>
+                <li class="nav-item">
+                   <a class="nav-link active" aria-current="page" href="{{ route('admin.trainers.index') }}"">Trainers</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('admin.courses.index') }}"">Courses</a>
+                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('admin.trainers.index') }}"">Students</a>
+                 </li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('admin.login') }}">Login</a>
