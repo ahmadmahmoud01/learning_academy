@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\CourseController;
 // use App\Http\Controllers\front\CourseController;
+use App\Http\Controllers\admin\StudentController;
 use App\Http\Controllers\admin\TrainerController;
 use App\Http\Controllers\front\ContactController;
 use App\Http\Controllers\front\MessageController;
@@ -75,15 +76,27 @@ Route::prefix('/dashboard')->group(function(){
 
         });
 
-        Route::prefix('/courses')->namespace('\App\Http\Controllers\admin')->group(function() {
+        Route::prefix('/courses')->group(function() {
 
-            // Trainers CRUD
+            // courses CRUD
             Route::get('/', [CourseController::class, 'index'])->name('admin.courses.index');
             Route::get('/create', [CourseController::class, 'create'])->name('admin.courses.create');
             Route::post('/store', [CourseController::class, 'store'])->name('admin.courses.store');
             Route::get('/edit/{id}', [CourseController::class, 'edit'])->name('admin.courses.edit');
             Route::post('/update', [CourseController::class, 'update'])->name('admin.courses.update');
             Route::get('/delete/{id}', [CourseController::class, 'delete'])->name('admin.courses.delete');
+
+        });
+
+        Route::prefix('/students')->group(function() {
+
+            // Students CRUD
+            Route::get('/', [StudentController::class, 'index'])->name('admin.students.index');
+            Route::get('/create', [StudentController::class, 'create'])->name('admin.students.create');
+            Route::post('/store', [StudentController::class, 'store'])->name('admin.students.store');
+            Route::get('/edit/{id}', [StudentController::class, 'edit'])->name('admin.students.edit');
+            Route::post('/update', [StudentController::class, 'update'])->name('admin.students.update');
+            Route::get('/delete/{id}', [StudentController::class, 'delete'])->name('admin.students.delete');
 
         });
 
